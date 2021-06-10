@@ -38,8 +38,6 @@ export default class Produto extends React.Component {
 
   render() {
   
-    const qtLista
-
     const listaProdutos = this.props.produtos
     .filter((produto)=>{return produto.preco <= this.props.maxFilter})
     .filter((produto) => {return produto.preco >= this.props.minFilter})
@@ -49,7 +47,7 @@ export default class Produto extends React.Component {
     return (
       <MainContainer>
         <ContainerQtEFiltro>
-          <h6>Quantidade de Produtos: {listaProdutos.lenght}</h6>
+          <h6>Quantidade de Produtos: {listaProdutos.length}</h6>
           <h6>Filtrar por ordem:</h6>
         </ContainerQtEFiltro>
 
