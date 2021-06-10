@@ -1,28 +1,29 @@
 import React from 'react';
 import Produto from './components/Produto/Produto.jsx'
+import Filtro from './components/filtro.jsx';
+
 
 export class App extends React.Component {
   
   state = {
     arrayProdutos: [
-          {titulo: "a", preco: 1, img: 1},
-          {titulo: "b", preco: 1, img: 2},
-          {titulo: "c", preco: 1, img: 3},
-          {titulo: "d", preco: 1, img: 4},
+          {titulo: "a", preco: 100, img: 1},
+          {titulo: "b", preco: 200, img: 2},
+          {titulo: "c", preco: 300, img: 3},
+          {titulo: "d", preco: 400, img: 4},
     ],
     carrinho: [
 
-    ],
+    ]
   }
 
-
+ 
   funcaoAdiciona = () => {
 
   }
   
+  
   render () {
-
-
 
     return (
 
@@ -32,8 +33,19 @@ export class App extends React.Component {
       <div>
         <header></header>
 
+
+      {/* ROBIN */}
         <main>
-          {/* <Filtro1>{filtroMinMax}{Busca}</Filtro1> */}
+          <div>
+            <h1>FILTROS</h1>
+            <Filtro filteredProducts={this.filteredProducts} />
+          <arrayProdutos
+            addProduct={this.addProduct}
+            onChangeMin={this.fromMaxToMin}
+            onChangeMax={this.fromMinToMax}
+            products={this.state.filteredProducts}
+          />
+          </div>
 
           
           <Produto
