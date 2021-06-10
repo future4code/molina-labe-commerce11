@@ -32,36 +32,43 @@ const ContainerProdutos = styled.div`
 
 export default class Produto extends React.Component {
 
+  state = {
+    sort: "decrescente",
+  }
 
-
-
-  render(){
+  render() {
   
-    const listaProdutos = this.props.produtos.map((produto)=>{
-    return(
-      <Card
-        img={produto.img}
-        titulo={produto.titulo}
-        preco={produto.preco}
-      />      
-    )
-  })
-    
+    const qtLista
+
+    const listaProdutos = this.props.produtos
+    .filter((produto)=>{return produto.preco <= this.props.maxFilter})
+    .filter((produto) => {return produto.preco >= this.props.minFilter})
+    .filter((produto)=>{return produto.titulo.includes(this.props.nameFilter)})
+    .sort((a,b)=>{if (this.state.sort === "crescente") {return a.preco - b.preco } else {return b.preco - a.preco }})
+
     return (
       <MainContainer>
         <ContainerQtEFiltro>
-          <h6>Quantidade de Produtos: X</h6>
+          <h6>Quantidade de Produtos: {listaProdutos.lenght}</h6>
           <h6>Filtrar por ordem:</h6>
         </ContainerQtEFiltro>
 
 
         <ContainerProdutos>
-        {listaProdutos}
+        
+        {listaProdutos.map((produto)=>{
+          return <Card
+          img={produto.img}
+          titulo={produto.titulo}
+          preco={produto.preco}
+          adiciona={()=>{this.props.funcaoAdiciona()}}
+          />
+        })}
+
         </ContainerProdutos>
       
 
       </MainContainer>
     )
   }
-
 }

@@ -43,6 +43,12 @@ export default class Card extends React.Component {
                 </BotaoAdiciona>
             
             
+            {/* <Imagem>1</Imagem>
+                <Titulo>titulo</Titulo>
+                <Preco>R$999</Preco>
+                <BotaoAdiciona>adiciona
+                </BotaoAdiciona> */}
+
             </CardCotainer>
 
         )
