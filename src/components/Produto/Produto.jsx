@@ -30,6 +30,11 @@ const ContainerProdutos = styled.div`
 
 `
 
+const ContainerFiltro = styled.div`
+  display:flex;
+  flex-direction:row;
+` 
+
 export default class Produto extends React.Component {
 
   state = {
@@ -53,11 +58,13 @@ export default class Produto extends React.Component {
       <MainContainer>
         <ContainerQtEFiltro>
           <h6>Quantidade de Produtos: {listaProdutos.length}</h6>
-          <h6>Filtrar por ordem:</h6>
+          <ContainerFiltro>
+          <p>Filtrar por ordem:</p>
           <select value={this.state.sort} onChange={this.ordernarMaiorMenor}>
             <option value={'crescente'}>Menor Preço</option>
             <option value={'decrescente'}>Maior Preço</option>
           </select>
+          </ContainerFiltro>
         </ContainerQtEFiltro>
 
 

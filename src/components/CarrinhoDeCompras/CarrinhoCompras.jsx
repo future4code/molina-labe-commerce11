@@ -3,6 +3,7 @@ import { CarrinhoItem } from './CarrinhoItem';
 import styled from 'styled-components';
 
 const CarrinhoContainer = styled.div`
+    width: 25%;
     border: 1px solid black;
     padding: 8px;
 `;
@@ -31,6 +32,7 @@ export class CarrinhoCompras extends React.Component {
                 {this.props.itens.map((produto,index) => {
                     return <CarrinhoItem key = {index}
                         itens ={produto}
+                        titulo={produto.titulo}
                         excluirProdutoDoCarrinho={this.props.excluirProdutoDoCarrinho}
                     />
                 })}

@@ -16,7 +16,7 @@ export class CarrinhoItem extends React.Component {
     render() {
         return <ItemContainer>
             
-            <p>{this.props.itens.nome}</p>
+            <p>{this.props.titulo}</p>
             <p>{this.props.itens.quantidade}Un</p>
             <button onClick={() => this.props.excluirProdutoDoCarrinho(this.props.itens.id)}>
                 Excluir

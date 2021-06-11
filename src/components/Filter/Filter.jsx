@@ -7,14 +7,21 @@ const ContainerFiltro = styled.div`
 `
 
 export default class Filter extends React.Component {
-
     render() {
         return (
             <ContainerFiltro>
-                <p>área do Filtro aqui</p>
-            </ContainerFiltro>
+                {/* <h3>Filtros</h3>
+                <InputContainer>
+                Valor mínimo:
+                    <input
+                     type="number"
+                        value={this.props.minFilter}
+                        onChange={this.props.onChangeMinFilter}
+                    />
+                </InputContainer> */}
 
-        )
+            </ContainerFiltro>
+            )
 
 
     }
