@@ -7,21 +7,58 @@ export class App extends React.Component {
   
   state = {
     arrayProdutos: [
-          {titulo: "a", preco: 100, img: 1},
-          {titulo: "b", preco: 200, img: 2},
-          {titulo: "c", preco: 300, img: 3},
-          {titulo: "d", preco: 400, img: 4},
+          {name: "a", value: 100, img: 1},
+          {name: "b", value: 200, img: 2},
+          {name: "c", value: 300, img: 3},
+          {name: "d", value: 400, img: 4},
     ],
     carrinho: [
 
-    ]
+    ],
+    //......................................................T e s t e . v
+    filteredProducts: [
+      {name: "a", value: 100, img: 1},
+      {name: "b", value: 200, img: 2},
+      {name: "c", value: 300, img: 3},
+      {name: "d", value: 400, img: 4},
+    ],
+    //......................................................T e s t e . ^
   }
 
+
+  onChange
  
   funcaoAdiciona = () => {
 
   }
   
+  //......................................................T e s t e . v 
+  filteredProducts = (min, max, name) => {
+    const newFilteredProduct = this.state.arrayProdutos.filter((product) => {
+      if (min === "" && max === "") {
+        return product
+      }
+      else if (product.value >= min && product.value <= max) {
+        return product
+      }
+      return true
+    })
+
+    let newFilteredProductName = [];
+    
+    if (!(name === "")) {
+    newFilteredProductName = newFilteredProduct.filter((product) => {
+    if (product.name.includes(name)) {
+          return product;
+        }
+        return true
+      });
+      this.setState({ filteredProducts: newFilteredProductName });
+    } else {
+      this.setState({ filteredProducts: newFilteredProduct });
+    }
+  };
+ //..........................................................T e s t e . ^
   
   render () {
 
@@ -39,6 +76,11 @@ export class App extends React.Component {
           <div>
             <h1>FILTROS</h1>
             <Filtro filteredProducts={this.filteredProducts} />
+          min
+          max
+          busca
+
+
           <arrayProdutos
             addProduct={this.addProduct}
             onChangeMin={this.fromMaxToMin}
@@ -49,7 +91,7 @@ export class App extends React.Component {
 
           
           <Produto
-          produtos={this.state.arrayProdutos}
+          produtos={this.state.filteredProducts}
           adiciona={()=>{this.funcaoAdiciona()}}
           />
           

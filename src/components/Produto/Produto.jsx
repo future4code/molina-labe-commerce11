@@ -41,8 +41,8 @@ export default class Produto extends React.Component {
     return(
       <Card
         img={produto.img}
-        titulo={produto.titulo}
-        preco={produto.preco}
+        titulo={produto.name}
+        preco={produto.value}
       />      
     )
   })

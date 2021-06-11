@@ -12,7 +12,7 @@ const MainContainer = styled.div`
   align-items: center;
   height: 500px;
   margin-left: 10px;
-  border: 100px
+  border: 100px;
   
 
   @media (max-width: 800px) {
@@ -52,8 +52,8 @@ const Botao = styled.button`
 
 export default class Filtro extends React.Component {
   state = {
-    minValueInput: "",
-    maxValueInput: "",
+    minValueInput: "99",
+    maxValueInput: "350",
     nameInput: "",
   };
 
@@ -67,13 +67,24 @@ export default class Filtro extends React.Component {
     this.setState({ nameInput: event.target.value });
   };
 
+  // filter = () => {
+  //   this.props.filter(
+  //     this.state.minValueInput,
+  //     this.state.maxValueInput,
+  //     this.state.nameInput
+  //   );
+  // };
+
+
+  //.............................................. testando aqui v
   filter = () => {
-    this.props.filteredProducts(
+   this.props.filteredProducts(
       this.state.minValueInput,
       this.state.maxValueInput,
       this.state.nameInput
     );
   };
+ //.................................................testando aqui ^
 
   cleanFilter = () => {
     this.setState({
