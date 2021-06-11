@@ -37,17 +37,11 @@ export default class Card extends React.Component {
                 <Titulo>{this.props.titulo}</Titulo>
                 <Preco>R${this.props.preco}</Preco>
                 <BotaoAdiciona
-                onClick={()=>{this.props.funcaoAdiciona()}}
+                onClick={()=>this.props.adiciona(this.props.id)}
 
                 >adiciona
                 </BotaoAdiciona>
             
-            
-            {/* <Imagem>1</Imagem>
-                <Titulo>titulo</Titulo>
-                <Preco>R$999</Preco>
-                <BotaoAdiciona>adiciona
-                </BotaoAdiciona> */}
 
             </CardCotainer>
 

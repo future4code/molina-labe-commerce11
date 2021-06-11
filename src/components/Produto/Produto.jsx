@@ -33,7 +33,11 @@ const ContainerProdutos = styled.div`
 export default class Produto extends React.Component {
 
   state = {
-    sort: "decrescente",
+    ordem: "decrescente",
+  }
+
+  ordernarMaiorMenor = (event) => {
+    return this.setState({ordem: event.target.value})
   }
 
   render() {
@@ -42,13 +46,18 @@ export default class Produto extends React.Component {
     .filter((produto)=>{return produto.preco <= this.props.maxFilter})
     .filter((produto) => {return produto.preco >= this.props.minFilter})
     .filter((produto)=>{return produto.titulo.includes(this.props.nameFilter)})
-    .sort((a,b)=>{if (this.state.sort === "crescente") {return a.preco - b.preco } else {return b.preco - a.preco }})
+    .sort((a,b)=>{if (this.state.ordem === "crescente") {return a.preco - b.preco } else {return b.preco - a.preco }})
+
 
     return (
       <MainContainer>
         <ContainerQtEFiltro>
           <h6>Quantidade de Produtos: {listaProdutos.length}</h6>
           <h6>Filtrar por ordem:</h6>
+          <select value={this.state.sort} onChange={this.ordernarMaiorMenor}>
+            <option value={'crescente'}>Menor Preço</option>
+            <option value={'decrescente'}>Maior Preço</option>
+          </select>
         </ContainerQtEFiltro>
 
 
@@ -59,7 +68,8 @@ export default class Produto extends React.Component {
           img={produto.img}
           titulo={produto.titulo}
           preco={produto.preco}
-          adiciona={()=>{this.props.funcaoAdiciona()}}
+          id={produto.id}
+          adiciona={this.props.adiciona}
           />
         })}
 

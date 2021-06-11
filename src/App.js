@@ -1,5 +1,6 @@
 import React from 'react';
 import Produto from './components/Produto/Produto.jsx'
+import Filter from './components/Filter/Filter.jsx'
 
 export class App extends React.Component {
   
@@ -10,23 +11,66 @@ export class App extends React.Component {
       nameFilter:"prod",
 
     arrayProdutos: [
-          {titulo: "produto a", preco: 5000, img: 1},
-          {titulo: "produto b", preco: 3000, img: 2},
-          {titulo: "produto c", preco: 500, img: 3},
-          {titulo: "produto d", preco: 100, img: 4},
+          {id: 1, titulo: "produto a", img: 1, preco: 5000},
+          {id: 2, titulo: "produto b", img: 2, preco: 3000},
+          {id: 3, titulo: "produto c", img: 3, preco: 500},
+          {id: 4, titulo: "produto d", img: 4, preco: 100},
     ],
     carrinho: [
+      {id: 4, titulo: "produto d", img: 4, preco: 100, quantidade: 2}
 
     ],
   }
 
-
-  funcaoAdiciona = () => {
-
+  minFilter = (event) => {
+    
   }
   
-  render () {
+  maxFilter = (event) => {
+  
+  }
+  
+  nameFilter = (event) => {
+  
+  }
+  
 
+    funcaoAdiciona = (id) => {
+      const produtosNoCarrinho = this.state.carrinho.find(produto => id === produto.id)
+  
+      if(produtosNoCarrinho) {
+
+        const atualizadaCarrinho = this.state.carrinho.map(produto => {
+          if(id === produto.id) {
+            return {
+              ...produto,
+              quantidade: produto.quantidade + 1
+            }
+          }
+  
+          return produto
+        })
+  
+        return this.setState({carrinho: atualizadaCarrinho})
+
+      } else {
+        
+        const produtoDoArray = this.state.arrayProdutos.find(produto => id === produto.id)
+
+        console.log(produtoDoArray)
+  
+        const inserirNoCarrinho = [...this.state.carrinho, {...produtoDoArray, quantidade: 1}]
+  
+        return this.setState({carrinho: inserirNoCarrinho})
+      }
+     
+    }
+
+  
+  
+  render () {
+    
+    console.log(this.state.carrinho)
 
     return (
 
@@ -37,17 +81,24 @@ export class App extends React.Component {
         <header></header>
 
         <main>
-          {/* <Filtro1>{filtroMinMax}{Busca}</Filtro1> */}
+          <Filter   
+            minFilter={this.state.minFilter}
+            maxFilter={this.state.maxFilter}
+            nameFilter={this.state.nameFilter}
+            
+            />
+         
+
+          
 
         
           <Produto
           produtos={this.state.arrayProdutos}
-          adiciona={()=>{this.funcaoAdiciona()}}
+          adiciona={this.funcaoAdiciona}
           minFilter={this.state.minFilter}
           maxFilter={this.state.maxFilter}
           nameFilter={this.state.nameFilter}
           />
-          
           
           {/*<Carrinho> </Carrinho>*/}
 
