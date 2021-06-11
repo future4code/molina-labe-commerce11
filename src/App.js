@@ -1,6 +1,15 @@
 import React from 'react';
 import Produto from './components/Produto/Produto.jsx'
 import Filter from './components/Filter/Filter.jsx'
+import styled from 'styled-components'
+
+
+ const ContainerApp = styled.div`
+    display: flex;
+    flex-direction:row;
+    justify-content: center;
+    background-color: red;
+ `
 
 export class App extends React.Component {
   
@@ -77,21 +86,16 @@ export class App extends React.Component {
 
 
 
-      <div>
+      <ContainerApp>
         <header></header>
 
-        <main>
           <Filter   
             minFilter={this.state.minFilter}
             maxFilter={this.state.maxFilter}
             nameFilter={this.state.nameFilter}
             
             />
-         
-
-          
-
-        
+                 
           <Produto
           produtos={this.state.arrayProdutos}
           adiciona={this.funcaoAdiciona}
@@ -101,12 +105,11 @@ export class App extends React.Component {
           />
           
           {/*<Carrinho> </Carrinho>*/}
-
-        </main>
+          <div><h1>área do carrinho</h1></div>
 
         <footer></footer>
 
-      </div>
+      </ContainerApp>
     
     
     
