@@ -18,8 +18,8 @@ const Titulo = styled.h6`
 const Preco = styled.p`
 
 `
-const Imagem = styled.div`
-
+const Imagem = styled.img`
+    width: 100%;
 `
 const BotaoAdiciona = styled.button`
 
@@ -33,16 +33,16 @@ export default class Card extends React.Component {
 
             <CardCotainer>
             
-                <Imagem>{this.props.img}</Imagem>
+                <Imagem src={this.props.img} />
                 <Titulo>{this.props.titulo}</Titulo>
                 <Preco>R${this.props.preco}</Preco>
                 <BotaoAdiciona
-                onClick={()=>{this.props.funcaoAdiciona()}}
+                onClick={()=>this.props.adiciona(this.props.id)}
 
                 >adiciona
                 </BotaoAdiciona>
             
-            
+
             </CardCotainer>
 
         )
