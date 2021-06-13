@@ -1,6 +1,6 @@
 ### Projeto LabeCommerce
 
-####Integrantes
+#### Integrantes
 Pedro Henrique Resende de Abrantes, Robson Da Silva Filho, Sidney Souza, Danilo Anthony Chagas
 
 
