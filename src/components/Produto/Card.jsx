@@ -6,6 +6,7 @@ const CardCotainer = styled.div`
     flex-direction: column;
     align-items: center;
     border: 1px solid black;
+    border-radius: 10px;
     width: 300px;
     max-width: 300px;
     margin: 2vh 2vh;
@@ -20,6 +21,7 @@ const Preco = styled.p`
 `
 const Imagem = styled.img`
     width: 100%;
+    border-radius: 10px;
 `
 const BotaoAdiciona = styled.button`
 

@@ -4,8 +4,12 @@ import styled from 'styled-components';
 
 const CarrinhoContainer = styled.div`
     width: 25%;
-    border: 1px solid black;
+    border: 1px solid lightgray;
     padding: 8px;
+    margin-left: 1%;
+       @media (max-width: 414px) {
+        width: 90%;
+  }
 `;
 
 const ListaDoCarrinho = styled.div`
@@ -37,7 +41,7 @@ export class CarrinhoCompras extends React.Component {
                     />
                 })}
             </ListaDoCarrinho>
-            <p>Valor Total: R${this.getValorTotal()},00</p>
+            <p>Valor Total: R${this.getValorTotal().toFixed(2)}</p>
         </CarrinhoContainer>
     }
 }

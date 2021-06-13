@@ -3,22 +3,50 @@ import styled from 'styled-components'
 
 const ContainerFiltro = styled.div`
     min-width:15%;
-    background-color: orange;    
+    border: 1px solid lightgray;
+    margin-right: 1%;
+    padding: 0 1%;
+    @media (max-width: 414px) {
+        width: 98%;
+        margin-bottom: 2%;
+        }
+`
+
+const InputContainer = styled.div`
+    display: flex;
+    flex-direction: column;
 `
 
 export default class Filter extends React.Component {
     render() {
         return (
             <ContainerFiltro>
-                {/* <h3>Filtros</h3>
+                <h3>Filtros</h3>
                 <InputContainer>
-                Valor mínimo:
+                    <p>Valor mínimo:</p>
                     <input
-                     type="number"
-                        value={this.props.minFilter}
-                        onChange={this.props.onChangeMinFilter}
+                        type="number"
+                        value={this.props.filtroMin}
+                        onChange={this.props.onChangeMin}
                     />
-                </InputContainer> */}
+                </InputContainer>
+                <InputContainer>
+                    <p>Valor máximo:</p>
+                    <input
+                        type="number"
+                        value={this.props.filtroMax}
+                        onChange={this.props.onChangeMax}
+                    />
+                </InputContainer>
+
+                <InputContainer>
+                    <p>busca por nome:</p>
+                    <input
+                        type="text"
+                        value={this.props.filtroBusca}
+                        onChange={this.props.onChangeBusca}
+                    />
+                </InputContainer>
 
             </ContainerFiltro>
             )

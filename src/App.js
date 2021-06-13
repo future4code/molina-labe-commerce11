@@ -9,21 +9,36 @@ import styled from 'styled-components'
     display: flex;
     flex-direction:column;
     justify-content: center;
-    background-color: red;
- `
+`
 
-  const ContainerMain = styled.div`
+const ContainerMain = styled.div`
     display: flex;
     flex-direction:row;
     justify-content: center;
+      @media (max-width: 414px) {
+        display: flex;
+        flex-direction: column;
+        align-items: center;}
  `
+
+  const Header = styled.div`
+  display: flex;
+  flex-direction:row;
+  justify-content: center;
+  `
+
+  const Footer = styled.div`
+  display: flex;
+  flex-direction:row;
+  justify-content: center;
+  `
 
 export class App extends React.Component {
   
   state = {
 
       minFilter: 0,
-      maxFilter: 5000,
+      maxFilter: 150,
       nameFilter:"prod",
 
     arrayProdutos: [
@@ -39,34 +54,48 @@ export class App extends React.Component {
           {id: 10, titulo: "produto j", img: C10, preco: 122.42},
     ],
     carrinho: [
-      {
-        id: 4,
-        titulo: 'produto d',
-        preco: 10,
-        img: 'https://picsum.photos/200/200?a=4',
-        quantidade: 1
-      },
-      {
-        id: 3,
-        titulo: 'produto c',
-        preco: 30,
-        img: 'https://picsum.photos/200/200?a=3',
-        quantidade: 2
-      }
+      // {
+      //   id: 4,
+      //   titulo: 'produto d',
+      //   preco: 10,
+      //   img: 'https://picsum.photos/200/200?a=4',
+      //   quantidade: 1
+      // },
+      // {
+      //   id: 3,
+      //   titulo: 'produto c',
+      //   preco: 30,
+      //   img: 'https://picsum.photos/200/200?a=3',
+      //   quantidade: 2
+      // }
 
     ],
   }
 
-  minFilter = (event) => {
-    
+  componentDidUpdate() {
+    localStorage.setItem('carrinho',JSON.stringify(this.state.carrinho))
+  };
+  componentDidMount() {
+    const itemsCarrinho = localStorage.getItem('carrinho')
+    const atualizaCarrinho = JSON.parse(itemsCarrinho)
+    if(atualizaCarrinho) {
+      this.setState({carrinho: atualizaCarrinho})
+    }
+  };
+
+
+  filtroMin = (event) => {
+    this.setState({minFilter: Number(event.target.value)})
   }
   
-  maxFilter = (event) => {
-  
+  filtroMax = (event) => {
+    this.setState({maxFilter: Number(event.target.value)})
+
   }
   
-  nameFilter = (event) => {
-  
+  filtroBusca = (event) => {
+    this.setState({nameFilter: event.target.value})
+
   }
   
 
@@ -124,20 +153,20 @@ export class App extends React.Component {
 
 
       <ContainerApp>
-        <header>
+        <Header>
           <h1>
             .::LabCommerce::.
           </h1>
-        </header>
+        </Header>
        
         <ContainerMain>
           <Filter   
-            minFilter={this.state.minFilter}
-            maxFilter={this.state.maxFilter}
-            nameFilter={this.state.nameFilter}
-            // onChange={this.maxFilter}
-            // onChange={this.minFilter}
-            // onChange={this.nameFilter}            
+            filtroMin={this.state.minFilter}
+            filtroMax={this.state.maxFilter}
+            filtroBusca={this.state.nameFilter}
+            onChangeMax={this.filtroMax}
+            onChangeMin={this.filtroMin}
+            onChangeBusca={this.filtroBusca}            
             />
                  
           <Produto
@@ -155,7 +184,7 @@ export class App extends React.Component {
 
           </ContainerMain>
 
-        <footer></footer>
+        <Footer> projeto LabCommerce 2021</Footer>
 
       </ContainerApp>
     
