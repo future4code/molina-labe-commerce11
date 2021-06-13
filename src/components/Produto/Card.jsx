@@ -33,7 +33,7 @@ export default class Card extends React.Component {
 
             <CardCotainer>
             
-                <Imagem src={this.props.img} />
+                <Imagem alt={"imagem do produto"} src={this.props.img} />
                 <Titulo>{this.props.titulo}</Titulo>
                 <Preco>R${this.props.preco}</Preco>
                 <BotaoAdiciona
