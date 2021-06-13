@@ -1,4 +1,5 @@
 import React from 'react';
+import CarrinhoCompras from './components/CarrinhoDeCompras/CarrinhoCompras.jsx';
 import Produto from './components/Produto/Produto.jsx'
 import {C1,C2,C3,C4,C5,C6,C7,C8,C9,C10} from './components/Produto/Imagens.jsx'
 import Filter from './components/Filter/Filter.jsx'
@@ -68,7 +69,6 @@ export class App extends React.Component {
       //   img: 'https://picsum.photos/200/200?a=3',
       //   quantidade: 2
       // }
-
     ],
   }
 
@@ -86,6 +86,19 @@ export class App extends React.Component {
 
   filtroMin = (event) => {
     this.setState({minFilter: Number(event.target.value)})
+  }
+
+  excluirProdutoDoCarrinho = (itemId) => {
+    const novoCarrinho = this.state.carrinho.map((produto) => {
+      if(produto.id === itemId) {
+        return{
+          ...produto,
+          quantidade: produto.quantidade -1
+        }
+      }
+      return produto
+    }).filter((produto) => produto.quantidade > 0)
+    this.setState({carrinho:novoCarrinho})
   }
   
   filtroMax = (event) => {

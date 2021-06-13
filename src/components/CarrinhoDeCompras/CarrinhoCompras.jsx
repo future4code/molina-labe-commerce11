@@ -10,6 +10,7 @@ const CarrinhoContainer = styled.div`
        @media (max-width: 414px) {
         width: 90%;
   }
+
 `;
 
 const ListaDoCarrinho = styled.div`
@@ -36,12 +37,16 @@ export class CarrinhoCompras extends React.Component {
                 {this.props.itens.map((produto,index) => {
                     return <CarrinhoItem key = {index}
                         itens ={produto}
+
                         titulo={produto.titulo}
+
                         excluirProdutoDoCarrinho={this.props.excluirProdutoDoCarrinho}
                     />
                 })}
             </ListaDoCarrinho>
+
             <p>Valor Total: R${this.getValorTotal().toFixed(2)}</p>
+
         </CarrinhoContainer>
     }
 }
