@@ -155,7 +155,7 @@ export class App extends React.Component {
       <ContainerApp>
         <Header>
           <h1>
-            .::LabCommerce::.
+            .::LabeCommerce::.
           </h1>
         </Header>
        
@@ -184,7 +184,7 @@ export class App extends React.Component {
 
           </ContainerMain>
 
-        <Footer> projeto LabCommerce 2021</Footer>
+        <Footer> projeto LabeCommerce 2021</Footer>
 
       </ContainerApp>
     
