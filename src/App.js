@@ -3,7 +3,6 @@ import CarrinhoCompras from './components/CarrinhoDeCompras/CarrinhoCompras.jsx'
 import Produto from './components/Produto/Produto.jsx'
 import {C1,C2,C3,C4,C5,C6,C7,C8,C9,C10} from './components/Produto/Imagens.jsx'
 import Filter from './components/Filter/Filter.jsx'
-import CarrinhoCompras from './components/CarrinhoDeCompras/CarrinhoCompras.jsx';
 import styled from 'styled-components'
 
  const ContainerApp = styled.div`
