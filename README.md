@@ -13,4 +13,4 @@ Lifecycle/persistencia do Carrinho
 http://knotty-form.surge.sh/
 
 ### Imagens
-![image](https://user-images.githubusercontent.com/83218983/121809558-9e875600-cc33-11eb-8f4a-a3130fa28b1c.png)
+![image](https://user-images.githubusercontent.com/83218983/121897132-6d248e00-ccf8-11eb-837c-87133aaaef44.png)
