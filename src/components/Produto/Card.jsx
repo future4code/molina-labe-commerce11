@@ -6,6 +6,7 @@ const CardCotainer = styled.div`
     flex-direction: column;
     align-items: center;
     border: 1px solid black;
+    border-radius: 10px;
     width: 300px;
     max-width: 300px;
     margin: 2vh 2vh;
@@ -18,8 +19,9 @@ const Titulo = styled.h6`
 const Preco = styled.p`
 
 `
-const Imagem = styled.div`
-
+const Imagem = styled.img`
+    width: 100%;
+    border-radius: 10px;
 `
 const BotaoAdiciona = styled.button`
 
@@ -33,16 +35,16 @@ export default class Card extends React.Component {
 
             <CardCotainer>
             
-                <Imagem>{this.props.img}</Imagem>
+                <Imagem alt={"imagem do produto"} src={this.props.img} />
                 <Titulo>{this.props.titulo}</Titulo>
                 <Preco>R${this.props.preco}</Preco>
                 <BotaoAdiciona
-                onClick={()=>{this.props.funcaoAdiciona()}}
+                onClick={()=>this.props.adiciona(this.props.id)}
 
                 >adiciona
                 </BotaoAdiciona>
             
-            
+
             </CardCotainer>
 
         )
