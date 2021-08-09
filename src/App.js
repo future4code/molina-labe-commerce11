@@ -1,6 +1,8 @@
 import React from 'react';
 import CarrinhoCompras from './components/CarrinhoDeCompras/CarrinhoCompras.jsx';
 import Produto from './components/Produto/Produto.jsx'
+import Filtro from './components/filtro.jsx';
+
 import {C1,C2,C3,C4,C5,C6,C7,C8,C9,C10} from './components/Produto/Imagens.jsx'
 import Filter from './components/Filter/Filter.jsx'
 import styled from 'styled-components'
@@ -32,7 +34,6 @@ const ContainerMain = styled.div`
   flex-direction:row;
   justify-content: center;
   `
-
 export class App extends React.Component {
   
   state = {
@@ -42,6 +43,11 @@ export class App extends React.Component {
       nameFilter:"prod",
 
     arrayProdutos: [
+
+          {name: "a", value: 100, img: 1},
+          {name: "b", value: 200, img: 2},
+          {name: "c", value: 300, img: 3},
+          {name: "d", value: 400, img: 4},
           {id: 1, titulo: "produto a", img: C1, preco: 57.98}, 
           {id: 2, titulo: "produto b", img: C2, preco: 75.45},
           {id: 3, titulo: "produto c", img: C3, preco: 114.86},
@@ -52,6 +58,7 @@ export class App extends React.Component {
           {id: 8, titulo: "produto h", img: C8, preco: 82.23},
           {id: 9, titulo: "produto i", img: C9, preco: 70.32},
           {id: 10, titulo: "produto j", img: C10, preco: 122.42},
+
     ],
     carrinho: [
       // {
@@ -69,6 +76,14 @@ export class App extends React.Component {
       //   quantidade: 2
       // }
     ],
+    //......................................................T e s t e . v
+    filteredProducts: [
+      {name: "a", value: 100, img: 1},
+      {name: "b", value: 200, img: 2},
+      {name: "c", value: 300, img: 3},
+      {name: "d", value: 400, img: 4},
+    ],
+    //......................................................T e s t e . ^
   }
 
   componentDidUpdate() {
@@ -81,6 +96,12 @@ export class App extends React.Component {
       this.setState({carrinho: atualizaCarrinho})
     }
   };
+
+
+  onChange
+ 
+  funcaoAdiciona = () => {
+
 
 
   filtroMin = (event) => {
@@ -100,6 +121,39 @@ export class App extends React.Component {
     this.setState({carrinho:novoCarrinho})
   }
   
+
+  //......................................................T e s t e . v 
+  filteredProducts = (min, max, name) => {
+    const newFilteredProduct = this.state.arrayProdutos.filter((product) => {
+      if (min === "" && max === "") {
+        return product
+      }
+      else if (product.value >= min && product.value <= max) {
+        return product
+      }
+      return true
+    })
+
+    let newFilteredProductName = [];
+    
+    if (!(name === "")) {
+    newFilteredProductName = newFilteredProduct.filter((product) => {
+    if (product.name.includes(name)) {
+          return product;
+        }
+        return true
+      });
+      this.setState({ filteredProducts: newFilteredProductName });
+    } else {
+      this.setState({ filteredProducts: newFilteredProduct });
+    }
+  };
+ //..........................................................T e s t e . ^
+  
+  render () {
+
+    return (
+=======
   filtroMax = (event) => {
     this.setState({maxFilter: Number(event.target.value)})
 
@@ -133,6 +187,7 @@ export class App extends React.Component {
         
         const produtoDoArray = this.state.arrayProdutos.find(produto => id === produto.id)
 
+
         console.log(produtoDoArray)
   
         const inserirNoCarrinho = [...this.state.carrinho, {...produtoDoArray, quantidade: 1}]
@@ -164,6 +219,25 @@ export class App extends React.Component {
 
 
 
+      {/* ROBIN */}
+        <main>
+          <div>
+            <h1>FILTROS</h1>
+            <Filtro filteredProducts={this.filteredProducts} />
+          min
+          max
+          busca
+
+
+          <arrayProdutos
+            addProduct={this.addProduct}
+            onChangeMin={this.fromMaxToMin}
+            onChangeMax={this.fromMinToMax}
+            products={this.state.filteredProducts}
+          />
+          </div>
+
+
       <ContainerApp>
         <Header>
           <h1>
@@ -182,6 +256,9 @@ export class App extends React.Component {
             />
                  
           <Produto
+
+          produtos={this.state.filteredProducts}
+
           produtos={this.state.arrayProdutos}
           adiciona={this.funcaoAdiciona}
           minFilter={this.state.minFilter}

@@ -44,12 +44,23 @@ export default class Produto extends React.Component {
   }
 
   render() {
-  
+
+    const listaProdutos = this.props.produtos.map((produto)=>{
+    return(
+      <Card
+        img={produto.img}
+        titulo={produto.name}
+        preco={produto.value}
+      />      
+    )
+  })
+
     const listaProdutos = this.props.produtos
     .filter((produto)=>{return produto.preco <= this.props.maxFilter})
     .filter((produto) => {return produto.preco >= this.props.minFilter})
     .filter((produto)=>{return produto.titulo.includes(this.props.nameFilter)})
     .sort((a,b)=>{if (this.state.ordem === "crescente") {return a.preco - b.preco } else {return b.preco - a.preco }})
+
 
 
     return (
